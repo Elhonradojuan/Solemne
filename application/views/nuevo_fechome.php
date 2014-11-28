@@ -1,3 +1,39 @@
+<!-- Funcion que comprueba si es un rut valido o existente -->
+<script type="text/javascript" src="../BDD/jquery.js"></script>
+<script>
+            $(document).ready(function(){
+                $('#rut').focusout( function(){
+                    if($('#rut').val()!= ""){
+                        $.ajax({
+                            type: "POST",
+                            url: "<?=site_url('transacciones/comprueba_rut');?>",
+                            data: "rut="+$('#rut').val(),
+                  
+                            beforeSend: function(){
+                              $('#msgUsuario').html(' Verificando...');
+                                $("#submitbutton").attr('disabled','-1');
+                            },
+                            success: function( respuesta ){
+                              if(respuesta == 2){
+                                $('#msgUsuario').html("Este no es un Rut valido");
+                                $("#submitbutton").attr('disabled','-1');
+                            }
+                              if(respuesta == 0){
+                                $('#msgUsuario').html("");
+                                $('#submitbutton').removeAttr('disabled')                                
+                            }
+                              if(respuesta == 1){
+                                $('#msgUsuario').html("");
+                                $('#submitbutton').removeAttr('disabled')  
+                              }
+                            
+                            
+                            }
+                        });
+                    }
+                });
+                            });
+</script>   
 
 <ol class="breadcrumb">
   <li><a href="<?=site_url('');?>">Inicio</a></li>
@@ -7,7 +43,7 @@
       <div class="row">
 	  
         <div class="col-sm-12">
-  	<div class="panel panel-danger">
+  	<div class="panel panel-custom">
             <div class="panel-heading">
               <h3 class="panel-title">Nuevo usuario del sistema</h3>
             </div>
@@ -47,7 +83,7 @@
 	</tr>
 
 	<tr>
-	<td><input type="submit" id="submitbutton" value="Guardar" /></td>
+	<td><input type="submit" id="submitbutton" value="Guardar"  class="btn btn-default"/></td>
 	</tr>
 
 	</table>

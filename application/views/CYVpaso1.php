@@ -1,5 +1,3 @@
-
-
 <!-- Funciones que muestran select dependientes, ciudades dependiendo region, y comunas segun la ciudad escogida-->
 <script type="text/javascript">
   $(document).ready(function(){
@@ -14,7 +12,6 @@
     })
   });
 });
-
   $(document).ready(function(){
     $("#Ciudad").change(function(){
     $.ajax({
@@ -28,7 +25,7 @@
   });
 });
 </script>
-<!-- Funcion que comprueba si es un rut valido o existente 
+<!-- Funcion que comprueba si es un rut valido o existente -->
 <script type="text/javascript" src="../BDD/jquery.js"></script>
 <script>
             $(document).ready(function(){
@@ -36,7 +33,7 @@
                     if($('#rut').val()!= ""){
                         $.ajax({
                             type: "POST",
-                            url: "<?=site_url('transacciones/rut_valido');?>",
+                            url: "<?=site_url('transacciones/comprueba_rut');?>",
                             data: "rut="+$('#rut').val(),
                   
                             beforeSend: function(){
@@ -53,7 +50,8 @@
                                 $('#submitbutton').removeAttr('disabled')                                
                             }
                               if(respuesta == 1){
-                                $('#msgUsuario').html("<a href='/SCT/UsuariosyClientes/Crear_cliente2.php?cl="+$('#rut').val()+"'>Crear vendedor</a>");
+							    //$('#msgUsuario').html("<a href='/SCT/UsuariosyClientes/Crear_cliente2.php?cl="+$('#rut').val()+"'>Crear vendedor</a>");
+                                $('#msgUsuario').html("<a href='<?=site_url('ejecutivos/nuevo_cliente');?>'>Crear vendedor</a>");
                                 $("#submitbutton").attr('disabled','-1');
                               }
                             
@@ -64,14 +62,13 @@
                 });
                             });
 </script>   
--->
-
 
 
 
 <ol class="breadcrumb">
   <li><a href="<?=site_url('');?>">Inicio</a></li>
-  <li class="active">Seleccionar cliente</li>
+  <li><a href="<?=site_url('transacciones/cargar_busqueda_vendedor');?>">Seleccionar cliente</a></li>
+  <li><a href="<?=site_url('transacciones/buscar_transacciones_vendedor2/'.$datos_tx[0]->rut_cliente);?>">Seleccionar transaccion</a></li>
   <li class="active">Compra/Venta Paso 1</li>
 </ol>
 
@@ -82,7 +79,7 @@
          </div>
 
 <div class="col-sm-6">
-  	<div class="panel panel-danger">
+  	<div class="panel panel-custom">
       <div class="panel-heading">
         <h3 class="panel-title">Paso uno</h3>
          </div>
@@ -90,7 +87,7 @@
 
 <h3>Datos basicos</h3>
 <table>
-<form method="post" action="BDD/Compra_paso1_ingresar_propiedad.php">
+<form method="post" action="<?=site_url('transacciones/insertarcyvpaso1');?>">
 <tr align="left">
 <td>Rol avaluo:</td> 
 <td><input name="Rol" type="text" placeholder="xxx-xxx" required/></td>
@@ -178,7 +175,7 @@
 
 
 <tr>
-<td  width="127">Estado:</td> 
+<td width="127">Estado:</td> 
 <td><select name="Estado">
 <option value="En Curso">EN CURSO</option>
 <option value="Observacion">OBSERVACIÓN</option>
@@ -187,11 +184,12 @@
 </td>
 </tr>
 
-<input type="hidden" name="RutC" value="<?php echo 11111111; ?>">
+<input type="hidden" name="RutC" value="<?php echo $datos_tx[0]->rut_cliente; ?>">
+<input type="hidden" name="Rut_fechome" value="<?php echo $data['rut']; ?>">
 <!--<input type="hidden" name="RutC" value="<?php// echo $rut_cliente; ?>">-->
 
 <tr>
-<td><input type="submit" id="submitbutton" value="Guardar" /></td>
+<td><input type="submit" id="submitbutton" value="Guardar" class="btn btn-default"/></td>
 </tr>
 
 </form>
@@ -206,8 +204,8 @@
 
 <div class="col-sm-4">
 <p>Tipo de transaccion: Compra/Venta</p>
-<p>Transaccion a nombre de <? echo "_SESSION['user_name']"; ?></p>
-<p>Nombre vendedor: <?php echo "nombrevende"; ?></p>
+<p><? echo 'Transaccion a nombre de '.$data['nombre'].' '.$data['apellido']; ?></p>
+<p><?php echo 'Nombre vendedor: '.$data_cliente[0]->nombre.' '.$data_cliente[0]->apellido; ?></p>
 <p>Fecha: <?php echo date("d/m/y"); ?></p>
 </div>			
 			
