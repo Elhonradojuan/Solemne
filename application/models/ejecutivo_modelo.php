@@ -44,6 +44,21 @@ class Ejecutivo_modelo extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	function datos_cliente_lista($rut)
+	{
+		$this->db->select('*');
+		$this->db->from('cliente');
+		$this->db->where('rut =',$rut);
+		$query = $this->db->get();
+		return $query->result();
+	}
+  		
+	function eliminar_cliente_lista($rut)
+	{
+	$this->db->where('rut', $rut);
+	$this->db->delete('cliente'); 
+	}
   	
 	function modificar_ejecutivo()
 	{
@@ -59,6 +74,15 @@ class Ejecutivo_modelo extends CI_Model {
 	function datos_ejecutivo()
 	{
 		$rut = $_POST['rut_cliente'];		
+		$this->db->select('*');
+		$this->db->from('fechome');
+		$this->db->where('rut =',$rut);
+		$query = $this->db->get();
+		return $query->result();
+	}
+  
+	function datos_ejecutivo_lista($rut)
+	{
 		$this->db->select('*');
 		$this->db->from('fechome');
 		$this->db->where('rut =',$rut);

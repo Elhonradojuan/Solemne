@@ -24,8 +24,6 @@
     <!-- Fixed navbar -->
     <div class="navbar navbar-custom " role="navigation">
       <div class="container">		
-
-	  
 			<center>	 
 			<table>
 				<tr>
@@ -47,7 +45,8 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           <!--  <li class="active"><a href="http://docencia.eit.udp.cl/~17698677/Solemne/">Inicio</a></li> -->
-            <li><a href="<?=site_url('');?>">Inicio</a></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><a href="<?=site_url('');?>">Inicio</a></li>
 
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span></a>
@@ -56,13 +55,8 @@
                 <li><a href="<?=site_url('ejecutivos/editar_cliente1');?>">Editar Cliente</a></li>
               </ul>
             </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compra/Venta <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="<?=site_url('transacciones/cargar_busqueda_vendedor');?>">Inicio Compra/Venta</a></li>
-                <li><a href="#">Busqueda Avanzada</a></li>
-              </ul>
-            </li>
+			<li><a href="<?=site_url('transacciones/cargar_busqueda_vendedor');?>">Compra/Venta</a></li>
+			<!--
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Arriendo <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -70,6 +64,7 @@
                 <li><a href="#">Busqueda Avanzada</a></li>
               </ul>
             </li>
+			-->
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejecutivos <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -77,15 +72,12 @@
                 <li><a href="<?=site_url('ejecutivos/editar_ejecutivo1');?>"">Editar Ejecutivo</a></li>
               </ul>
             </li>
-            <li><a href="#contact">Balance</a></li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Listar <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Propiedades</a></li>
-                <li><a href="#">Arriendos</a></li>
-                <li><a href="#">Compra/Venta</a></li>
-                <li><a href="#">Clientes</a></li>
-                <li><a href="#">Ejecutivos</a></li>
+                <li><a href="<?=site_url('listas/cargar_lista_compraventa');?>">Compra/Venta</a></li>
+                <li><a href="<?=site_url('listas/cargar_lista_clientes');?>">Clientes</a></li>
+                <li><a href="<?=site_url('listas/cargar_lista_ejecutivos');?>">Ejecutivos</a></li>
               </ul>
             </li>
             <li><a href="<?=site_url('login/logout');?>">Salir</a></li>
@@ -93,5 +85,4 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
     <div class="container">

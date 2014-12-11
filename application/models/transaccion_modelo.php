@@ -92,6 +92,50 @@ function insertar_ubicacion($ubicacion)
 		return $id_tx;
 	}
 
+function updatear_ubicacion($ubicacion)
+	{
+	
+	$this->db->where('id_ubicacion', $this->input->post('id_ubic'));
+    $this->db->update('ubicacion', $ubicacion);
+	$id_ubicacion = $this->db->insert_id();
+		return $id_ubicacion;
+	}
+		 
+	    
+	function updatear_cyv_paso1($transaccion)
+	{
+	$this->db->where('id_transaccion', $this->input->post('id_tx'));
+	$this->db->update('transaccion', $transaccion);
+	$id_tx = $this->db->insert_id();
+		return $id_tx;
+	}
+	    
+	function insertar_updatear_docitem($itemdesc,$itemvalor,$id_docitem,$id_tx)
+	{
+	
+		$datos = array(
+		  'valor' => $itemvalor,
+		  'descripcion' => $itemdesc,
+		  'transaccion_id' => $id_tx,
+		  'docitem_id' => $id_docitem,
+		);
+		
+		$this->db->select('*');
+		$this->db->from('docitem_transaccion');
+		$this->db->where('docitem_id',$id_docitem);
+		$this->db->where('transaccion_id',$id_tx);
+		$query = $this->db->get();
+		if ($query->num_rows() == 0)
+		{
+		$this->db->insert('docitem_transaccion', $datos);
+		}
+		else
+		{
+		$this->db->where('docitem_id',$id_docitem);
+		$this->db->where('transaccion_id',$id_tx);
+		$this->db->update('docitem_transaccion', $datos);
+		}
+	}
 	
    function datos_vendedor($rut){
 		$this->db->select('*');
@@ -119,6 +163,16 @@ function insertar_ubicacion($ubicacion)
 		$this->db->from('transaccion');
 		$this->db->join('ubicacion', 'transaccion.ubicacion_id = ubicacion.id_ubicacion');
 		$this->db->where('id_transaccion =',$idtx);
+		$query = $this->db->get();
+		return $query->result();
+		}
+	
+		function sacar_docitem_transc($id_tx,$id_docitem){
+
+		$this->db->select('*');
+		$this->db->from('docitem_transaccion');
+		$this->db->where('docitem_id',$id_docitem);
+		$this->db->where('transaccion_id',$id_tx);
 		$query = $this->db->get();
 		return $query->result();
 		}

@@ -35,23 +35,31 @@
 
 			foreach($transacciones as $transaccion)
 			{
-			echo '<tr>';
-            echo '<td>'.$transaccion->fecha.'</td>';
-            echo '<td>'.$transaccion->tipo_inmueble.'</td>';
-            echo '<td>'.$transaccion->direccion.' '.$transaccion->numeracion.'</td>';
-            echo '<td>'.$transaccion->estado.'</td>';
-			//echo '<td><button onclick="window.location.href=';site_url('transacciones/editar_cyv');echo '/'.$rut_cliente.'/'.$transaccion->id_transaccion."> Editar </button>"';
-			echo "<td><a class='btn btn-default' href='".site_url('transacciones/editar_cyv').'/'.$rut_cliente.'/'.$transaccion->id_transaccion."' role='button'>Editar</a></td>";
-			echo '</tr>';
+				echo '<tr>';
+				echo '<td>'.$transaccion->fecha.'</td>';
+				echo '<td>'.$transaccion->tipo_inmueble.'</td>';
+				echo '<td>'.$transaccion->direccion.' '.$transaccion->numeracion.'</td>';
+				echo '<td>'.$transaccion->estado.'</td>';
+				//echo '<td><button onclick="window.location.href=';site_url('transacciones/editar_cyv');echo '/'.$rut_cliente.'/'.$transaccion->id_transaccion."> Editar </button>"';
+				echo "<td><a class='btn btn-default' href='".site_url('transacciones/editar_cyv').'/'.$rut_cliente.'/'.$transaccion->id_transaccion."' role='button'>Editar</a></td>";
+				echo '</tr>';
 			 }
 			?>
 			
 			</tr>
 				
 	</table>
+	
+			 <?php
+			 if ($transacciones == NULL)
+			 {
+				echo '----No hay transacciones de compra/venta para este usuario----';
+			 }
+			 ?>
+			 
 	<br><br>
 	Para iniciar un nuevo proceso de Compra/Venta presione el siguiente bot&oacute;n<br>
-    <a class='btn btn-default' href="<?php echo site_url('transacciones/cargar_cyv').'/'.$rut_cliente.'/'.$transaccion->id_transaccion; ?>" role='button'>Comenzar</a>
+    <a class='btn btn-default' href="<?php echo site_url('transacciones/nuevo_cyv').'/'.$rut_cliente; ?>" role='button'>Comenzar</a>
 
 
 

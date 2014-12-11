@@ -68,11 +68,11 @@
 <ol class="breadcrumb">
   <li><a href="<?=site_url('');?>">Inicio</a></li>
   <li><a href="<?=site_url('transacciones/cargar_busqueda_vendedor');?>">Seleccionar cliente</a></li>
-  <li><a href="<?=site_url('transacciones/buscar_transacciones_vendedor2/'.$datos_tx[0]->rut_cliente);?>">Seleccionar transaccion</a></li>
+  <li><a href="<?=site_url('transacciones/buscar_transacciones_vendedor2/'.$data_cliente[0]->rut);?>">Seleccionar transaccion</a></li>
   <li class="active">Compra/Venta Paso 1</li>
 </ol>
 
-<?php //print_r($data); ?>
+<?php //print_r($data_cliente); ?>
 
 <div class="row">
 <div class="col-sm-2">
@@ -184,7 +184,7 @@
 </td>
 </tr>
 
-<input type="hidden" name="RutC" value="<?php echo $datos_tx[0]->rut_cliente; ?>">
+<input type="hidden" name="RutC" value="<?php echo $data_cliente[0]->rut; ?>">
 <input type="hidden" name="Rut_fechome" value="<?php echo $data['rut']; ?>">
 <!--<input type="hidden" name="RutC" value="<?php// echo $rut_cliente; ?>">-->
 

@@ -47,6 +47,42 @@ public function __construct()
      $this->load->view('footer');
    }
 
+   function editar_cliente_lista($rut)
+   {
+   	$data = $this->user->esta_logeado();
+	
+    $data_cliente = $this->Ejecutivo_modelo->datos_cliente_lista($rut);
+	$datos_vista = array('datos_c' => $data_cliente, 'data' => $data);
+	  
+     $this->load->view('header');
+     $this->load->view('editar_cliente2', $datos_vista);
+     $this->load->view('footer');
+   }
+
+   function editar_ejecutivo_lista($rut)
+   {
+   	$data = $this->user->esta_logeado();
+	
+    $data_cliente = $this->Ejecutivo_modelo->datos_ejecutivo_lista($rut);
+	$datos_vista = array('datos_c' => $data_cliente, 'data' => $data);
+	  
+     $this->load->view('header');
+     $this->load->view('editar_ejecutivo2', $datos_vista);
+     $this->load->view('footer');
+   }
+
+   function eliminar_cliente_lista($rut)
+   {
+   	$this->Ejecutivo_modelo->eliminar_cliente_lista($rut);
+	redirect('listas/cargar_lista_clientes');
+   }
+   
+   function eliminar_ejecutivo_lista($rut)
+   {
+   	$this->Ejecutivo_modelo->eliminar_ejecutivo_lista($rut);
+	redirect('listas/cargar_lista_ejecutivos');
+   }
+   
     function modificar_cliente()
 	{
 		$this->Ejecutivo_modelo->modificar_cliente();

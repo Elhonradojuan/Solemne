@@ -87,7 +87,7 @@
 
 <h3>Datos basicos</h3>
 <table>
-<form method="post" action="<?=site_url('transacciones/insertarcyvpaso1');?>">
+<form method="post" action="<?=site_url('transacciones/updatearcyvpaso1');?>">
 <tr align="left">
 <td>Rol avaluo:</td> 
 <td><input name="Rol" type="text" placeholder="xxx-xxx" value = "<?php echo $datos_tx[0]->rol_avaluo ?>" required/></td>
@@ -186,6 +186,8 @@
 </td>
 </tr>
 
+<input type="hidden" name="id_tx" value="<?php echo $datos_tx[0]->id_transaccion; ?>">
+<input type="hidden" name="id_ubic" value="<?php echo $datos_tx[0]->ubicacion_id; ?>">
 <input type="hidden" name="RutC" value="<?php echo $datos_tx[0]->rut_cliente; ?>">
 <input type="hidden" name="Rut_fechome" value="<?php echo $data['rut']; ?>">
 <!--<input type="hidden" name="RutC" value="<?php// echo $rut_cliente; ?>">-->
